@@ -5,6 +5,7 @@
 
 #define PORT_SIZE 			8u
 #define NUMBER_OF_PORTS		6u
+#define COMMIT_UNLOCK_VALUE	0x4C4F434B
 
 static const PortBaseAdd[NUMBER_OF_PORTS] = {
 	GPIO_APB_BASE_ADDRESS_A,
@@ -38,14 +39,20 @@ void Port_Init( const Port_ConfigType *ConfigPtr)
 		/*		Setting Internal Attach 		*/
 		if(ConfigPtr[i].internallAttach == PULLUP)
 		{
+			GPIOLOCK(portAdd)	= COMMIT_UNLOCK_VALUE;
+			GPIOCR(portAdd) 		= 0x1;
 			GPIOPUR(portAdd)|=(1<<pinIndex);
 		}
 		else if (ConfigPtr[i].internallAttach == PULLDOWN)
 		{
+			GPIOLOCK(portAdd)	= COMMIT_UNLOCK_VALUE;
+			GPIOCR(portAdd) 		= 0x1;
 			GPIOPUR(portAdd)|=(1<<pinIndex);
 		}
 		else if (ConfigPtr[i].internallAttach == OPEN_DRAIN)
 		{
+			GPIOLOCK(portAdd)	= COMMIT_UNLOCK_VALUE;
+			GPIOCR(portAdd) 		= 0x1;
 			GPIOODR(portAdd) |= (1 << pinIndex);
 		}
 		
