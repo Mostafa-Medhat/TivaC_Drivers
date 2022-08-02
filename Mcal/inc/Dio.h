@@ -8,13 +8,12 @@
  *  Description:  header file for Dio Module    
  *  
  *********************************************************************************************************************/
-#ifndef Dio_H
-#define Dio_H
+#ifndef Dio_H_
+#define Dio_H_
 
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
-#include "Std_Types.h"
 
 
 /*******************************************************************************
@@ -107,7 +106,7 @@ typedef enum{
 	PORTF
 }Dio_PortType;
 
-typedef uint8 Dio_PortLevelType;
+typedef unsigned char Dio_PortLevelType;
 
 
 
@@ -138,7 +137,7 @@ void Dio_WriteChannel (Dio_ChannelType ChannelId, Dio_LevelType Level);
 
 Dio_PortLevelType Dio_ReadPort (Dio_PortType PortId);
 
-void Dio_WritePort (Dio_PortType Portld, Dic_PortLevelType Level);
+void Dio_WritePort (Dio_PortType Portld, Dio_PortLevelType Level);
 
 Dio_LevelType Dio_FlipChannel (Dio_ChannelType ChannelId);
 

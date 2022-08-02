@@ -4,10 +4,10 @@
 #include "Bit_Math.h"
 #include "platform_Types.h"
 
-#define PORT_SIZE 			8u
+#define PORT_SIZE 				8u
 #define NUMBER_OF_PORTS		6u
 
-static const PortBaseAdd[NUMBER_OF_PORTS] = {
+static const uint32 PortBaseAdd[NUMBER_OF_PORTS] = {
 	GPIO_APB_BASE_ADDRESS_A,
 	GPIO_APB_BASE_ADDRESS_B,
 	GPIO_APB_BASE_ADDRESS_C,
@@ -23,6 +23,7 @@ Dio_LevelType Dio_ReadChannel (Dio_ChannelType ChannelId)
 	uint8 pinID = ChannelId % PORT_SIZE;
 	
 	uint32 portAdd = PortBaseAdd[portIndex];
+	
 	
 	level = GET_BIT(GPIODATA(portAdd),pinID);
 	
@@ -49,7 +50,7 @@ void Dio_WriteChannel (Dio_ChannelType ChannelId, Dio_LevelType Level)
 
 Dio_PortLevelType Dio_ReadPort (Dio_PortType PortId)
 {
-	uint8 Dio_PortLevelType portLevel;
+	Dio_PortLevelType portLevel;
 	uint32 portAdd = PortBaseAdd[PortId];
 	
 	portLevel=GPIODATA(portAdd);
@@ -57,7 +58,7 @@ Dio_PortLevelType Dio_ReadPort (Dio_PortType PortId)
 	return portLevel;
 }
 
-void Dio_WritePort (Dio_PortType Portld, Dic_PortLevelType Level)
+void Dio_WritePort (Dio_PortType PortId, Dio_PortLevelType Level)
 {
 	uint32 portAdd = PortBaseAdd[PortId];
 	GPIODATA(portAdd) = Level;
@@ -199,4 +200,4 @@ void Dio_WriteChannel (Dio_ChannelType ChannelId, Dio_LevelType Level)
 		}	
 	}
 }
-
+*/

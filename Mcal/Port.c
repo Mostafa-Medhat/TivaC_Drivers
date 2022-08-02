@@ -1,6 +1,7 @@
 
 #include "Port.h"
 #include "mcu_hw.h"
+#include "portCfg.h"
 
 #define PORT_SIZE 			8u
 #define NUMBER_OF_PORTS		6u
@@ -16,47 +17,47 @@ static const PortBaseAdd[NUMBER_OF_PORTS] = {
 	
 void Port_Init( const Port_ConfigType *ConfigPtr)
 {
-	uint8 pinID = ConfigPtr-> Dio_ChannelType % PORT_SIZE ;
-	uint8 portIndex = ConfigPtr-> Dio_ChannelType / PORT_SIZE;
+	uint8 pinIndex = ConfigPtr-> pinId % PORT_SIZE ;
+	uint8 portIndex = ConfigPtr-> pinId / PORT_SIZE;
 	
 	uint32 portAdd = PortBaseAdd[portIndex];
 	
 	/*		Setting Direction 		*/
 	if(ConfigPtr -> pinDir == OUTPUT)
 	{
-		GPIODIR(portAdd)|=(1<<pinID);
+		GPIODIR(portAdd)|=(1<<pinIndex);
 	}
 	else
 	{
-		GPIODIR(portAdd)&=~(1<<pinID);
+		GPIODIR(portAdd)&=~(1<<pinIndex);
 	}
 	
 	/*		Setting Internal Attach 		*/
 	if(ConfigPtr->internallAttach == PULLUP)
 	{
-		GPIOPUR(portAdd)|=(1<<pinID);
+		GPIOPUR(portAdd)|=(1<<pinIndex);
 	}
 	else if (ConfigPtr->internallAttach == PULLDOWN)
 	{
-		GPIOPUR(portAdd)|=(1<<pinID);
+		GPIOPUR(portAdd)|=(1<<pinIndex);
 	}
 	else if (ConfigPtr->internallAttach == OPEN_DRAIN)
 	{
-		GPIOODR(portAdd) |= (1 << PinIndex);
+		GPIOODR(portAdd) |= (1 << pinIndex);
 	}
 	
 	/*		Setting Direction 		*/
-	if(ConfigPtr->Port_PinOutputCurrentType == 2mA)
+	if(ConfigPtr->outputCurrent == TWO_mA)
 	{
-		GPIODR2R(portAdd) |= (1 << PinIndex);
+		GPIODR2R(portAdd) |= (1 << pinIndex);
 	}
-	else if(ConfigPtr->Port_PinOutputCurrentType == 4mA)
+	else if(ConfigPtr->outputCurrent == FOUR_mA)
 	{
-		GPIODR4R(portAdd) |= (1 << PinIndex);
+		GPIODR4R(portAdd) |= (1 << pinIndex);
 	}
-	else if(ConfigPtr->Port_PinOutputCurrentType == 8mA)
+	else if(ConfigPtr->outputCurrent == EIGHT_mA)
 	{
-		GPIODR8R(portAdd) |= (1 << PinIndex);
+		GPIODR8R(portAdd) |= (1 << pinIndex);
 	}
 	
 }

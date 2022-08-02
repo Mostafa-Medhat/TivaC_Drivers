@@ -132,7 +132,7 @@ typedef union
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
  *********************************************************************************************************************/
-#define GPIODATA(BaseAddr)					*((volatile unit32*)(BaseAddr+GPIODATA_OFFSET))
+#define GPIODATA(BaseAddr)					*((volatile uint32*)(BaseAddr+GPIODATA_OFFSET))
 #define GPIODIR(BaseAddr)           		*((volatile uint32*)(BaseAddr+GPIODIR_OFFSET))
 #define GPIOAFSEL(BaseAddr)					*((volatile uint32*)(BaseAddr+GPIOAFSEL_OFFSET))	
 #define GPIOLOCK(BaseAddr)					*((volatile uint32*)(BaseAddr+GPIOLOCK_OFFSET))		
