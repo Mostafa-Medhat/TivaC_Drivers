@@ -120,9 +120,8 @@ typedef unsigned char Dio_PortLevelType;
  *******************************************************************************/
 
 /******************************************************************************
-* \Syntax          : void IntCrtl_Init(void)                                      
-* \Description     : initialize Nvic\SCB Module by parsing the Configuration 
-*                    into Nvic\SCB registers                                    
+* \Syntax          :                              
+* \Description     :                           
 *                                                                             
 * \Sync\Async      : Synchronous                                               
 * \Reentrancy      : Non Reentrant                                             
