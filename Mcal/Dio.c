@@ -5,7 +5,7 @@
 #include "platform_Types.h"
 
 #define PORT_SIZE 				8u
-#define NUMBER_OF_PORTS		6u
+#define NUMBER_OF_PORTS			6u
 
 static const uint32 PortBaseAdd[NUMBER_OF_PORTS] = {
 	GPIO_APB_BASE_ADDRESS_A,

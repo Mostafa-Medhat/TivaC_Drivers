@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "port.h": "c"
+        "port.h": "c",
+        "portcfg.h": "c"
     }
 }

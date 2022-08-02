@@ -34,7 +34,7 @@
 #define SYSCTR_BASE_ADDRESS              0x400FE000
 #define RESC							 *((volatile uint32*)0x400FE05C)
 #define RCGCGPIO_OFFSET                  0x608
-#define RCGCGPIO                         *((volatile uint32*)(SYSCTR_BASE_ADDRESS+RCGCGPIO_OFFSET)
+#define RCGCGPIO                         *((volatile uint32*)(SYSCTR_BASE_ADDRESS+RCGCGPIO_OFFSET))
 
 typedef struct 
 {
